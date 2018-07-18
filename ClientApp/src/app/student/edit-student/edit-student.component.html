@@ -1,0 +1,45 @@
+<h5>Update Student</h5>
+<hr>
+
+<div *ngIf="student">
+  <h3 style="color: blue;">Update {{student.firstName}} {{student.lastName}}</h3>
+  <div class="row">
+    <div class="col-md-6" style="background-color: #eee;">
+      <form #f="ngForm">
+
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput id="firstName" name="firstName" 
+                    [(ngModel)]="student.firstName" required />
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput id="lastName" name="lastName" 
+                    [(ngModel)]="student.lastName" required />
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input matInput id="dateEnrolled" name="dateEnrolled"
+              [(ngModel)]="student.dateEnrolled" required
+              [matDatepicker]="picker" />
+            <mat-datepicker #picker></mat-datepicker>
+            
+            <mat-datepicker-toggle suffix [for]="picker"></mat-datepicker-toggle>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <button mat-raised-button (click)="updateStudent()">Update Student</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

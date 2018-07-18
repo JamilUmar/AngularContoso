@@ -1,0 +1,21 @@
+<div class="panel panel-default" *ngIf="instructor">
+  <div class="panel-heading">
+    <h3 class="text-center">Courses thought by {{instructor.firstName}} {{instructor.lastName}}</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <tr>
+        <th></th>
+        <th>Course</th>
+        <th>Title</th>
+        <th>Department</th>
+      </tr>
+      <tr *ngFor="let c of instructor.courseAssignments">
+        <td><button mat-button (click)="open(c.course.enrollments);">Select</button></td>
+        <td>{{c.course.courseId}}</td> 
+        <td>{{c.course.title}}</td>
+        <td>{{c.course.department.name}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

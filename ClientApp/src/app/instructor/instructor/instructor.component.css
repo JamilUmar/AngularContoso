@@ -1,0 +1,4 @@
+.mat-expansion-panel-header{ background-color: #eee; text-align: center;} 
+.mat-expansion-panel{ width: 15em;}
+.mouseCursor { cursor: pointer; }
+.selected { background-color: rgba(204, 204, 204, 0.5); }

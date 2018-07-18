@@ -1,0 +1,35 @@
+<h5>Course List</h5>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table">
+      <tr>
+        <td colspan="5">
+          <button mat-button (click)="gotoNewCourse()">Create Course</button>
+        </td>
+      </tr>
+      <tr>
+        <th>No</th>
+        <th>Title</th>
+        <th>Credit</th>
+        <th>Department</th>
+        <td></td>
+      </tr>
+      <tr *ngFor="let c of courses">
+        <td>{{c.courseId}}</td>
+        <td>{{c.title}}</td>
+        <td>{{c.credits}}</td>
+        <td>{{c.department.name}}</td>
+        <td>
+          <a matTooltip="Edit {{c.title}}" #tooltip="matTooltip" routerLink="/edit-course/{{c.courseId}}">
+            <i class="fa fa-edit pointer"></i>
+          </a>
+          |
+          <i matTooltip="Details of {{c.title}}" #tooltip="matTooltip" class="fa fa-binoculars pointer"></i> |
+          <i matTooltip="Remove {{c.title}}" #tooltip="matTooltip" class="fa fa-remove pointer"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-6"></div>
+</div>

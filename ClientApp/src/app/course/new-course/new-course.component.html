@@ -1,0 +1,67 @@
+<h5>New Course</h5>
+<hr>
+<div class="row">
+  <div class="col-md-4">
+    <form #f="ngForm" (ngSubmit)="onSubmit(course)">
+
+      <div class="form-group">
+        <mat-form-field class="courseIdDiv">
+          <input type="number" 
+                  matInput 
+                  placeholder="Course ID"
+                  name="courseId"
+                  id="courseId"
+                  [(ngModel)]="course.courseId"
+                  required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select matInput 
+                      placeholder="Department"
+                      name="departmentId"
+                      id="departmentId"
+                      [(ngModel)]="course.departmentId"
+                      required>
+            <mat-option *ngFor="let d of dept" [value]="d.departmentId">
+              {{d.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group">
+            <mat-form-field class="titleDiv">
+              <input matInput 
+                      placeholder="Title"
+                      name="title"
+                      id="title"
+                      [(ngModel)]="course.title"
+                      required />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group">
+            <mat-form-field class="creditDiv">
+              <input type="number" 
+                      matInput placeholder="Credits"
+                      name="credit"
+                      id="credit"
+                      [(ngModel)]="course.credits"
+                      required />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button [disabled]="!f.form.valid" type="submit" mat-button>Add Course</button>
+      </div>
+
+    </form>
+  </div>
+</div>

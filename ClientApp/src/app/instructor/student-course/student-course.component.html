@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Student Courses Enrolled</h4>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <tr>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Grade</th>
+      </tr>
+      <tr *ngFor="let d of data">
+        <td>{{d.student.firstName}}</td>
+        <td>{{d.courseId}}</td>
+        <td>{{d.grade}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+

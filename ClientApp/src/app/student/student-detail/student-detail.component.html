@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="data">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h4 style="color: blue;">{{data.firstName}} {{data.lastName}}'s Detail</h4>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <table class="table">
+                <tr>
+                  <th>Student</th>
+                  <td>{{data.firstName}} {{data.lastName}}</td>
+                </tr>
+                <tr>
+                  <th>Enrolled</th>
+                  <td>{{data.dateEnrolled | date:'MM/dd/yyyy'}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-8">
+              <table class="table">
+                <tr>
+                  <th colspan="3">
+                    <h4 class="text-center">Courses Enrolled</h4>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <table class="table">
+                      <tr>
+                        <th>Grade</th>
+                        <th>Course</th>
+                        <th>Title</th>
+                        <th>Credits</th>
+                      </tr>
+                      <tr *ngFor="let e of data.enrollments">
+                        <td>{{e.grade}}</td>
+                        <td>{{e.course.courseId}}</td>
+                        <td>{{e.course.title}}</td>
+                        <td>{{e.course.credits}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <button mat-button color="primary" (click)="goBack()">Back</button> -->
+    </div>
+  </div>
+</div>

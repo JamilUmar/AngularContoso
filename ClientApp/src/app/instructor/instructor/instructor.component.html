@@ -1,0 +1,51 @@
+<h5 style="color: blue;">Instructors List</h5>
+<div class="row">
+  <div class="col-md-10">
+    <table class="table">
+      <tr>
+        <th>Instructors</th>
+        <th>Hire Date</th>
+        <th>Office</th>
+        <th>Courses</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let i of instructors" [class.selected]="i === selectedInstructor">
+        <td>{{i.firstName}} {{i.lastName}}</td>
+        <td>{{i.hireDate | date:'MM-dd-yyyy'}}</td>
+        <td>{{i.officeAssignment?.location}}</td>
+        <td>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{i.firstName}}'s Courses
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div *ngFor="let c of i.courseAssignments">  
+                <div>
+                  <span>{{c.courseId}}</span> | <span>{{c.course.title}}</span>
+                </div>                
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </td>
+        <td>
+          <i matTooltip="Courses thought by {{i.firstName}} {{i.lastName}}" 
+              (click)="open(i);" class="mouseCursor">Select</i> |
+          <i matTooltip="Update {{i.firstName}} {{i.lastName}}" class="fa fa-pencil mouseCursor"></i> |
+          <i matTooltip="{{i.firstName}} {{i.lastName}}'s Detail" class="fa fa-folder-open-o mouseCursor"></i> |
+          <i matTooltip="Delete {{i.firstName}} {{i.lastName}}" class="fa fa-remove mouseCursor"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <app-instructor-course [instructor]="selectedInstructor"></app-instructor-course>
+  </div>
+  <div class="col-md-6">
+    <!-- <app-student-course></app-student-course> -->
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<h5>Update Course</h5>
+<hr>
+<div class="row" *ngIf="course">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h5>Update Course Screen</h5>
+      </div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="updateForm()">
+          <div class="form-group">
+            <mat-form-field>
+              <input matInput name="courseId" id="courseId" [(ngModel)]="course.courseId" required placeholder="Course ID" />
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-select name="departmentId" 
+                          id="departmentId" 
+                          [(ngModel)]="course.departmentId" 
+                          required 
+                          placeholder="Department ID">
+                <mat-option *ngFor="let d of dept" [value]="d.departmentId">
+                  {{d.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <input matInput 
+                      placeholder="Title"
+                      name="title"
+                      id="title"
+                      [(ngModel)]="course.title"
+                      required />
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <input matInput 
+                      placeholder="Credits"
+                      name="credits"
+                      id="credits"
+                      [(ngModel)]="course.credits"
+                      required />
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <button [disabled]="!f.form.valid" mat-raised-button type="submit">Update Course</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
