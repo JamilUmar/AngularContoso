@@ -1,0 +1,87 @@
+<h3>Course Detail</h3>
+<hr>
+<div *ngIf="data">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>{{data.title}} Course Details</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+              <table class="table">
+                <tr>
+                  <th>ID</th>
+                  <td>{{data.courseId}}</td>
+                </tr>
+                <tr>
+                  <th>Title</th>
+                  <td>{{data.title}}</td>
+                </tr>
+                <tr>
+                  <th>Department</th>
+                  <td>{{data.department.name}}</td>
+                </tr>
+                <tr>
+                  <th>Credit</th>
+                  <td>{{data.credits}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="table">
+                <tr>
+                  <td>
+                    <mat-accordion>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h4>Enrollment(s)</h4>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <table class="table">
+                          <tr>
+                            <th>Student</th>
+                            <th>Enrolled</th>
+                          </tr>
+                          <tr *ngFor="let d of data.enrollments">
+                            <td>{{d.student.firstName}} {{d.student.lastName}}</td>
+                            <td>{{d.student.dateEnrolled | date:'MM-dd-yyyy'}}</td>
+                          </tr>
+                        </table>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <mat-accordion>
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <h4>Instructor(s)</h4>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <table class="table">
+                          <tr>
+                            <th>Instructor</th>
+                            <th>Employed</th>
+                          </tr>
+                          <tr *ngFor="let c of data.courseAssignments">
+                            <td>{{c.instructor.firstName}} {{c.instructor.lastName}}</td>
+                            <td>{{c.instructor.hireDate | date:'MM-dd-yyyy'}}</td>
+                          </tr>
+                        </table>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,9 +16,11 @@ export class Student {
 export class Course {
   courseId: number;
   title: string;
-  credit: number;
-  department: Department[];
+  credits: number;
+  departmentId: number;
 
+
+  department: Department[];
   enrollment: Enrollment[];
 }
 

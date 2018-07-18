@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { CourseListComponent } from '../course/course-list/course-list.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
+
 
 
 import { RouterModule } from '@angular/router';
@@ -17,10 +19,12 @@ import { CourseService } from './course.service';
 
 
 @NgModule({
+  entryComponents: [CourseDetailComponent],
   declarations: [
     CourseListComponent,
     NewCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    CourseDetailComponent
   ],
   imports: [
     CommonModule,

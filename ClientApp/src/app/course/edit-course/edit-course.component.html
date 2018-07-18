@@ -7,7 +7,7 @@
         <h5>Update Course Screen</h5>
       </div>
       <div class="panel-body">
-        <form #f="ngForm" (ngSubmit)="updateForm()">
+        <form #f="ngForm">
           <div class="form-group">
             <mat-form-field>
               <input matInput name="courseId" id="courseId" [(ngModel)]="course.courseId" required placeholder="Course ID" />
@@ -47,7 +47,7 @@
             </mat-form-field>
           </div>
           <div class="form-group">
-            <button [disabled]="!f.form.valid" mat-raised-button type="submit">Update Course</button>
+            <button (click)="updateForm()" [disabled]="!f.form.valid" mat-raised-button>Update Course</button>
           </div>
         </form>
       </div>

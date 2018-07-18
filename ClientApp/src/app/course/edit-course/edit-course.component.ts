@@ -22,14 +22,15 @@ export class EditCourseComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
   ngOnInit(): void {
-    this.getCourse();
+    this.loadCourse();
     this.getDepartment();
   }
 
-  getCourse() {
+  loadCourse() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.db.getCourse(id).subscribe(data => {
       this.course = data;
+      console.log(this.course);
     });
   }
   getDepartment() {
@@ -43,7 +44,10 @@ export class EditCourseComponent implements OnInit {
 
   updateForm() {
     this.submitted = true;
-    this.db.updateCourse(this.course).subscribe(() => this.goBack());
-    // console.log(c);
+    this.db.updateCourse(this.course)
+      .subscribe(() => this.goBack());
+    console.log(this.course);
   }
+
+  get diagnostic() { return JSON.stringify(this.course); }
 }

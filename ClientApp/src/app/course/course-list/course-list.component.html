@@ -25,7 +25,10 @@
             <i class="fa fa-edit pointer"></i>
           </a>
           |
-          <i matTooltip="Details of {{c.title}}" #tooltip="matTooltip" class="fa fa-binoculars pointer"></i> |
+          <i matTooltip="Details of {{c.title}}" 
+              #tooltip="matTooltip" 
+              class="fa fa-binoculars pointer"
+              (click)="openDialog(c)"></i> |
           <i matTooltip="Remove {{c.title}}" #tooltip="matTooltip" class="fa fa-remove pointer"></i>
         </td>
       </tr>

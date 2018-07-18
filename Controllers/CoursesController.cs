@@ -22,6 +22,11 @@ namespace AngularContosoUniversity.Controllers
     {
       var result = await db.Courses
                             .Include(x=> x.Department)
+                              .ThenInclude(x=> x.Administrator)
+                            .Include(x=> x.CourseAssignments)
+                              .ThenInclude(x=> x.Instructor)
+                            .Include(x=> x.Enrollments)
+                              .ThenInclude(x=> x.Student)
                             .ToListAsync();
       return result;
     }
@@ -55,7 +60,20 @@ namespace AngularContosoUniversity.Controllers
       if(!ModelState.IsValid)
         return BadRequest(ModelState);
 
-      Course c = course;
+      // Course c = course;
+      // c.CourseId = id;
+      var c = await db.Courses
+                      .Include(x => x.Department)
+                      .Include(x=> x.Enrollments)
+                        .ThenInclude(x=> x.Student)
+                      .Include(x=> x.CourseAssignments)
+                        .ThenInclude(x=> x.Instructor)
+                      .FirstOrDefaultAsync(x => x.CourseId == id);
+      c.CourseId = course.CourseId;
+      c.DepartmentId = course.DepartmentId;
+      c.Title = course.Title;
+      c.Credits = course.Credits;
+      
       db.Update(c);
 
       await db.SaveChangesAsync();
