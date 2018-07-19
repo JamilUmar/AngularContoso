@@ -64,10 +64,6 @@ namespace AngularContosoUniversity.Controllers
       // c.CourseId = id;
       var c = await db.Courses
                       .Include(x => x.Department)
-                      .Include(x=> x.Enrollments)
-                        .ThenInclude(x=> x.Student)
-                      .Include(x=> x.CourseAssignments)
-                        .ThenInclude(x=> x.Instructor)
                       .FirstOrDefaultAsync(x => x.CourseId == id);
       c.CourseId = course.CourseId;
       c.DepartmentId = course.DepartmentId;

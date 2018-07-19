@@ -35,7 +35,7 @@ export class StudentService {
     return this.http.get<Student>(`${this.url}${id}`);
   }
   createStudent(s: Student): Observable<Student> {
-    return this.http.post<Student>(this.url + 'students', JSON.stringify(s), this.httpOptions)
+    return this.http.post<Student>(this.url, JSON.stringify(s), this.httpOptions)
       .pipe(
         // tap((s: Student) => this.log(`Added Client with Id : ${c.id}`)),
         catchError(this.handleError<Student>('createStudent')));
