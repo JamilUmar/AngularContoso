@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Instructor } from './../../models/entities';
 import { InstructorService } from './../instructor.service';
 
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-instructor',
@@ -15,7 +17,7 @@ export class InstructorComponent implements OnInit {
   selectedInstructor: Instructor;
 
 
-  constructor(private db: InstructorService) { }
+  constructor(private db: InstructorService, private router: Router) { }
   ngOnInit(): void {
     this.getInstructors();
   }
@@ -24,6 +26,10 @@ export class InstructorComponent implements OnInit {
     this.db.getInstructors().subscribe(data => {
       this.instructors = data;
     });
+  }
+
+  goNewInstructor() {
+    this.router.navigate(['./new-instructor']);
   }
 
   open(i: Instructor) {

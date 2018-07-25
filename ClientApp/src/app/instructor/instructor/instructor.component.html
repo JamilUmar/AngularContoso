@@ -3,6 +3,11 @@
   <div class="col-md-10">
     <table class="table">
       <tr>
+        <td colspan="5">
+          <button mat-raised-button (click)="goNewInstructor();">Create Instructor</button>
+        </td>
+      </tr>
+      <tr>
         <th>Instructors</th>
         <th>Hire Date</th>
         <th>Office</th>
@@ -32,7 +37,9 @@
         <td>
           <i matTooltip="Courses thought by {{i.firstName}} {{i.lastName}}" 
               (click)="open(i);" class="mouseCursor">Select</i> |
-          <i matTooltip="Update {{i.firstName}} {{i.lastName}}" class="fa fa-pencil mouseCursor"></i> |
+          <a routerLink="/update-instructor/{{i.id}}">
+            <i matTooltip="Update {{i.firstName}} {{i.lastName}}" class="fa fa-pencil mouseCursor"></i> |
+            </a>
           <i matTooltip="{{i.firstName}} {{i.lastName}}'s Detail" class="fa fa-folder-open-o mouseCursor"></i> |
           <i matTooltip="Delete {{i.firstName}} {{i.lastName}}" class="fa fa-remove mouseCursor"></i>
         </td>

@@ -22,6 +22,19 @@ export class InstructorService {
   getInstructors(): Observable<Instructor[]> {
     return this.http.get<Instructor[]>(this.url);
   }
+  getInstructor(id: number): Observable<Instructor> {
+    return this.http.get<Instructor>(`${this.url}${id}`)
+      .pipe(catchError(this.handleError<Instructor>('getInstructor')));
+  }
+
+
+
+
+
+
+
+
+
 
 
   private handleError<T>(operation = 'operation', result?: T) {

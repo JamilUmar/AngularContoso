@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-6" *ngIf="instructor">
+    <h5>Update Instructor</h5><hr>
+    <form>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <mat-form-field>
+              <input matInput type="text" 
+                      placeholder="FirstName" 
+                      name="firstname" id="firstname" 
+                      [(ngModel)]="instructor.firstName" required
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <input matInput type="text" 
+                      placeholder="LastName" 
+                      name="lastname" id="lastname" 
+                      [(ngModel)]="instructor.lastName" required
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+
+                  <input matInput type="datetime" 
+                  [matDatepicker]="picker"
+                  placeholder="Hire Date" 
+                  name="hiredate" id="hiredate" 
+                  [(ngModel)]="instructor.hireDate" required
+                  
+          />
+              
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </form>
+  </div>
+</div>
